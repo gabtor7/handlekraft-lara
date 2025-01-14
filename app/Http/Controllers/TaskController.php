@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index(){
         $tasks = Task::all();
-        return response->json($tasks);
+        return response()->json($tasks);
     }
 
     // CREATE
@@ -18,7 +18,7 @@ class TaskController extends Controller
         $task->task($request->task);
         $task->save();
 
-        return  response->json([
+        return response()->json([
             "message" => "Nouvelle tâche ajoutée avec succès"
         ], 201);
     }
@@ -28,9 +28,9 @@ class TaskController extends Controller
         $task = Task::find($id);
 
         if(!empty($task)){
-            return response->json($task);
+            return response()->json($task);
         } else {
-            return response->json([
+            return response()->json([
                 "message" => "Tâche introuvable/inexistante"
             ], 404);
         }
@@ -45,28 +45,28 @@ class TaskController extends Controller
             $task->task = is_null($request->task) ? $task->task : $request->task;
             $task->save();
 
-            return response->json([
+            return response()->json([
                 "message" => "Tâche mise à jour"
             ], 201);
         } else {
-            return response->json([
+            return response()->json([
                 "message" => "Tâche introuvable/inexistante"
             ], 404);
         }
     }
 
     // DELETE
-    public function delete($id){
+    public function destroy($id){
 
         if(Task::where('id', $id)->exists()){
             $task = Task::find($id);
-            $task->delete();
+            $task->destroy();
 
-            return response->json([
+            return response()->json([
                 "message" => "Tâche supprimée"
             ], 201);
         } else {
-            return response->json([
+            return response()->json([
                 "message" => "Tâche introuvable/inexistante"
             ], 404);
         }
