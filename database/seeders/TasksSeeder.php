@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Tasks;
+use App\Models\Task;
 
 class TasksSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class TasksSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         for($i = 0; $i < 5; $i++){
-            Tasks::create([
+            Task::create([
                 'task' => $faker->sentence
             ]);
         }
