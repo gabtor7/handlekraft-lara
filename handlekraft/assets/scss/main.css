@@ -1,0 +1,63 @@
+@font-face{
+    font-family: "Mono MMM 5";
+    src: url("~/assets/fonts/monommm_5/monoMMM_5.ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    background-color: #050009;
+    color: #ffffff;
+}
+
+*{
+    font-family: "Mono MMM 5";
+}
+
+.task-input-form{
+
+    #task-input{
+        width: 100%;
+        background-color: #10050E;
+        border: 0;
+        border-bottom: solid 1px #ffffff16;
+        width: 100%;
+        padding: 5px 10px;
+        caret-color: #fff;
+        color: #ffff90A0;
+        font-size: 14px;
+    
+        &::placeholder{
+            color: #ffffff55;
+        }
+    
+        &:focus-visible{
+            outline: none;
+            border-bottom: solid 1px #ffff90a0;
+        }
+    }
+
+    &#task-submit{
+        font-family: "Mono MMM 5";
+    }
+}
+
+
+.header-container{
+    text-align: center;
+    border-bottom: solid 1px #ffffff16
+}
+
+.main-content-container{
+    max-width: 1340px;
+    border: solid 1px #ffffff16;
+    border-top: 0;
+    padding: 10px;
+    margin: auto;
+}
+
+.content-panel{
+    width: 50%;
+    padding: 10px;
+}
