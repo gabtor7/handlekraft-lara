@@ -15,12 +15,19 @@ class TaskController extends Controller
     // CREATE
     public function store(Request $request){
         $task = new Task();
-        $task->task($request->task);
-        $task->save();
+        $task->task = $request->task;
+        
+        if(!empty($task)){
+            $task->save();
+            return response()->json([
+                "message" => "Nouvelle tâche ajoutée avec succès"
+            ], 201);
 
-        return response()->json([
-            "message" => "Nouvelle tâche ajoutée avec succès"
-        ], 201);
+        } else {
+            return response->json([
+                "message" => "impossible d'ajouter la tâche"
+            ], 403);
+        }
     }
 
     // READ

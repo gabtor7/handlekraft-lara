@@ -16,6 +16,8 @@ class Kernel extends HttpKernel{
     
         'api' => [
             'listen:8000',
+            'listen:5173',
+            'listen:3000'
         ],
     ];
 }

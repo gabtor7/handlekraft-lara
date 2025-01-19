@@ -1,7 +1,7 @@
 <template>
-    <form class="task-input-form" spellcheck="false">
-        <textarea id="task-input" name="task-input" placeholder="C'est quoi le plan ?" rows="10" :description="taskInput"></textarea>
-        <input id="task-submit" type="submit" value="Ajouter" v-on:click="addTask">
+    <form enctype="multipart/form-data" class="task-input-form" spellcheck="false">
+        <textarea id="task-input" name="task-input" placeholder="C'est quoi le plan ?" rows="10" v-model="taskInput"></textarea>
+        <input id="task-submit" type="submit" value="Ajouter" @click="addTask">
     </form>
 </template>
 
@@ -20,11 +20,16 @@ export default{
 
         addTask(e){
             e.preventDefault();
+
             // ajouter la tâche, via la requête API correspondante
             fetch('http://127.0.0.1:8000/api/task', {
                 method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
-                    task: this.taskInput
+                    'task': this.taskInput
                 })
             })
             .then(res => res.json)
