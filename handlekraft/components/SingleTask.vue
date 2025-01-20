@@ -1,6 +1,8 @@
 <template>
-    <div class="task-content">
-        {{ task }}
+    <div class="task-container">
+        <div class="task-content">
+            {{ task }}
+        </div>
     </div>
 
 </template>

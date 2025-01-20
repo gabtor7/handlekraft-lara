@@ -22,6 +22,7 @@ body{
         background-color: #10050E;
         border: 0;
         border-bottom: solid 1px #ffffff16;
+        margin-bottom: 5px;
         width: 100%;
         padding: 5px 10px;
         caret-color: #fff;
@@ -38,8 +39,19 @@ body{
         }
     }
 
-    &#task-submit{
+    #task-submit{
         font-family: "Mono MMM 5";
+        background-color:transparent;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 2px;
+
+        &:hover{
+            cursor: pointer;
+            background-color: #ffff90a0;
+            border-color: #ffff90a0;
+            color: #10050E;
+        }
     }
 }
 
@@ -57,7 +69,24 @@ body{
     margin: auto;
 }
 
+.content-blocks-wrapper{
+    display: flex;
+    gap: 20px;
+}
+
 .content-panel{
     width: 50%;
     padding: 10px;
+}
+
+.all-tasks{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    gap: 5px;
+
+    .task-container{
+        border: solid 1px #ffffff16;
+        padding: 5px;
+        min-height: 150px;
+    }
 }

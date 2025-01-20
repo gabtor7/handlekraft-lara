@@ -1,4 +1,5 @@
 <template>
+    <h3>Nouvelle tâche</h3>
     <form enctype="multipart/form-data" class="task-input-form" spellcheck="false">
         <textarea id="task-input" name="task-input" placeholder="C'est quoi le plan ?" rows="10" v-model="taskInput"></textarea>
         <input id="task-submit" type="submit" value="Ajouter" @click="addTask">
