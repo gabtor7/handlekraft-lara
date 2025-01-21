@@ -9,16 +9,15 @@
 <script>
 export default{
     name: "LeftSide",
+    emits: ['reload-tasks'],
+
     data() {
         return {
             taskInput: ''
         }
     },
+    
     methods: {
-        onSubmit(e){
-            e.preventDefault();
-        },
-
         addTask(e){
             e.preventDefault();
 
@@ -33,7 +32,9 @@ export default{
                     'task': this.taskInput
                 })
             })
-            .then(res => res.json)
+            .then(() => {
+                this.$emit('reload-tasks');
+            })
             .catch(err => console.log(err));
             this.taskInput = '';
         }

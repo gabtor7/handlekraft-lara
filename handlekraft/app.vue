@@ -12,8 +12,8 @@
 
 
 <script>
-import SiteHeader from './components/SiteHeader.vue';
-import MainContent from './components/MainContent.vue';
+import SiteHeader from './components/views/SiteHeader.vue';
+import MainContent from './components/views/MainContent.vue';
 
 export default{
   name: "app",
