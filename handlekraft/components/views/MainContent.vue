@@ -32,7 +32,7 @@ export default{
                 method: "GET"
             })
             .then(res => res.json())
-            .then(tasklist => this.tasks = tasklist)
+            .then(tasklist => this.tasks = tasklist.reverse())
             .catch(err => console.log(err));
             console.log(this.tasks);
         }
