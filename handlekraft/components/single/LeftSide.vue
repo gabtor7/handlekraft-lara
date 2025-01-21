@@ -34,7 +34,6 @@ export default{
             })
             .then(() => {
                 this.$emit('reload-tasks');
-                console.log('should reload');
             })
             .catch(err => console.log(err));
             this.taskInput = '';
