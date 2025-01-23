@@ -3,7 +3,7 @@
         <div class="left-panel content-panel">
             <LeftSide @reload-tasks="getTasks"/>
         </div>
-        <div class="right-panel content-panel">
+        <div class="right-panel content-panel all-tasks">
             <h3>Toutes les tâches</h3>
             <RightSide v-for="task in tasks" :key="task.id" v-bind="task" @reload-tasks="getTasks"/>
         </div>

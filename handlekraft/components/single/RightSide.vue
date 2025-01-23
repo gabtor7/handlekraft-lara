@@ -1,26 +1,32 @@
 <template>
-
-    <div class="all-tasks">
-        <!-- <SingleTask v-for="task in tasks" :key="task.id" v-bind="task" @reload-tasks="getTasks"/> -->
-        <div class="single-task-container">
-            <div class="single-task-content">
-                {{ task }}
-            </div>
+    <div class="single-task-container">
+        <div class="single-task-content">
+            {{ task }}
         </div>
+        <div class="edition-controls">
+            <button class="action-btn edit-btn" @click="open = !open"><img src="../../assets/icons/feather/edit-3.svg" /></button>
+            <button class="action-btn delete-btn" @click="openDelete = !openDelete"><img src="../../assets/icons/feather/trash.svg" /></button>
+        </div>
+        <TaskDelete v-show="openDelete" :taskId="this.id" @cancel-delete="open = false"></TaskDelete>
     </div>
 </template>
 
 <script>
-// import SingleTask from './SingleTask.vue';
+import TaskDelete from './TaskDelete.vue';
 
 export default {
-    // name: "RightSide",
+    name: 'RightSide',
 
-    // data() {
-    //     return {
-    //         tasks: [],
-    //     }
-    // },
+    components: {
+        TaskDelete
+    },
+
+    data() {
+        return {
+            openDelete: false,
+            open: false
+        }
+    },
 
     props: {
         task: {
@@ -30,26 +36,7 @@ export default {
             type: Number,
             required: true
         }
-    },
+    }
 
-    // components: {
-    //     SingleTask
-    // },
-
-    // methods: {
-    //     getTasks(){
-    //         fetch(`http://127.0.0.1:8000/api/task`, {
-    //             method: "GET"
-    //         })
-    //         .then(res => res.json())
-    //         .then(tasklist => this.tasks = tasklist)
-    //         .catch(err => console.log(err));
-    //         console.log(this.tasks);
-    //     }
-    // },
-
-    // created(){
-    //     this.getTasks();
-    // }
 }
 </script>
