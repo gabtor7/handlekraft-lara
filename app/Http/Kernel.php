@@ -7,7 +7,7 @@ class Kernel extends HttpKernel{
 
     protected $routeMiddleware = [
         'listen' => \App\Http\Middleware\ListenPort::class,
-        'cors' => \App\Http\Middleware\HandleCors::class
+        'cors' => \App\Http\Middleware\Cors::class
     ];
     
     protected $middlewareGroups = [
@@ -17,7 +17,8 @@ class Kernel extends HttpKernel{
     
         'api' => [
             'listen:8000',
-            'listen:5173'
+            'listen:5173',
+            'listen:3000'
         ],
     ];
 }

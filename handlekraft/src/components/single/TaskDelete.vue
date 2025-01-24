@@ -29,6 +29,7 @@ export default{
             fetch(`http://127.0.0.1:8000/api/task/${this.taskId}`, {
                 method: 'DELETE',
                 headers: {
+                    'Content-Type': 'text/html',
                     'Access-Control-Allow-Origin': '*'
                 }
             })
