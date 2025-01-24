@@ -64,10 +64,10 @@ class TaskController extends Controller
 
     // DELETE
     public function destroy($id){
-
-        if(Task::where('id', $id)->exists()){
-            $task = Task::find($id);
-            $task->destroy();
+        $task = Task::find($id);
+        if(!empty($task)){
+            print_r($task);
+            $task->delete();
 
             return response()->json([
                 "message" => "Tâche supprimée"

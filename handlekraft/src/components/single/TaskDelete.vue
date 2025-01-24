@@ -25,22 +25,28 @@ export default{
     
     methods: {
         deleteTask(){
-            console.log(this.taskId);
-            fetch(`127.0.0.1:8000/api/task/${this.taskId}`, {
+            
+            fetch(`http://127.0.0.1:8000/api/task/${this.taskId}`, {
                 method: 'DELETE',
                 headers: {
-                    'Accept': 'application/json'
+                    'Access-Control-Allow-Origin': '*'
                 }
             })
             .then(() => {
                 this.$parent.$parent.getTasks();
-            });
-            this.$parent.$emit('reloadPost');
-        }
-    },
+            })
+            .catch(err => console.log(err))
+            this.closePopup()
+        },
 
-    closePopup(){
-        this.$emit('cancel-delete');
+        closePopup(){
+            this.$emit('cancel-delete');
+        },
+
+        tasks(){
+            this.$parent.$parent.getTasks();
+        }
     }
 }
+
 </script>
