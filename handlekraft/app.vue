@@ -1,24 +1,18 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <div class="header-container">
-      <SiteHeader />
-    </div>
-    <div class="main-content-container">
-      <MainContent />
-    </div>
+    <NuxtPage />
   </div>
 </template>
 
 
 <script>
-import SiteHeader from './src/components/views/SiteHeader.vue';
-import MainContent from './src/components/views/MainContent.vue';
+import Index from './pages/index.vue';
 
 export default{
   name: "app",
   components: {
-    SiteHeader, MainContent
+   Index
   }
 }
 </script>
