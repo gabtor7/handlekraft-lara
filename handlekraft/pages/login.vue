@@ -1,12 +1,12 @@
 <template>
     <div class="login-form-container">
         <form method="POST">
-            <div class="email-input">
+            <div class="input-field email-input">
                 <label for="email">Email</label>
                 <input v-model="email" type="email" id="email" class="form-control" name="email" placeholder="example@mail.com">
                 <!-- <span class="error-msg" v-if="errors.email">{{ errors.email }}</span><br /><br /> -->
             </div>
-            <div class="password-input">
+            <div class="input-field password-input">
                 <label for="password">Mot de passe</label>
                 <input v-model="password" type="password" id="password" class="form-control" name="password"><br />
                 <!-- <div class="error-msg" v-if="loginStatus">{{ wrongCredentials }}</div><br /> -->

@@ -40,6 +40,9 @@ class LoginController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Registers a new User with the given data
+     */
     public function signup(Request $request){
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -64,4 +67,5 @@ class LoginController extends Controller
         ], Response::HTTP_CREATED);
 
     }
+
 }

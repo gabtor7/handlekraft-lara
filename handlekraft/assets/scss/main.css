@@ -6,6 +6,14 @@
     font-display: swap;
 }
 
+@font-face{
+    font-family: "Ubuntu Mono";
+    src: url("~/assets/fonts/ubuntu-mono-2/UbuntuMono-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body{
     background-color: #050009;
     color: #ffffff;
@@ -13,6 +21,10 @@ body{
 
 *{
     font-family: "Mono MMM 5";
+}
+
+#task-input, .single-task-content{
+    font-family: "Ubuntu Mono";
 }
 
 .task-input-form{
@@ -27,7 +39,7 @@ body{
         padding: 5px 10px;
         caret-color: #fff;
         color: #ffff90A0;
-        font-size: 14px;
+        font-size: 16px;
     
         &::placeholder{
             color: #ffffff55;
@@ -64,6 +76,29 @@ button, input[type="button"], input[type="submit"]{
         background-color: #ffff90a0;
         border-color: #ffff90a0;
         color: #10050E;
+    }
+}
+
+/* - LOGIN PAGE - */
+
+.login-form-container {
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    } 
+}
+.input-field{
+    display: flex;
+    label {
+        width: 200px;
     }
 }
 
@@ -104,7 +139,7 @@ button, input[type="button"], input[type="submit"]{
 
         .single-task-content{
             flex: 10;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .edition-controls{
