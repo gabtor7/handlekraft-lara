@@ -118,11 +118,12 @@ button, input[type="button"], input[type="submit"]{
 
 .content-blocks-wrapper{
     display: flex;
+    flex-direction: column;
     gap: 20px;
+    padding: 20px;
 }
 
 .content-panel{
-    width: 50%;
     padding: 10px;
 }
 
