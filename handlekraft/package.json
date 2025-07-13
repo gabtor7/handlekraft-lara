@@ -15,6 +15,7 @@
     "nuxt": "^3.15.2",
     "tinymce": "^7.9.1",
     "vue": "latest",
+    "vue-froala-wysiwyg": "^4.5.2",
     "vue-router": "latest"
   },
   "devDependencies": {

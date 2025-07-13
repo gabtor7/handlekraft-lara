@@ -15,9 +15,3 @@ export default{
   }
 }
 </script>
-<!-- 
-<script setup>
-import Editor from '@tinymce/tinymce-vue';
-</script> -->
-
-<!-- <script src="\node_modules\tinymce\tinymce.min.js" referrerpolicy="origin"></script> -->

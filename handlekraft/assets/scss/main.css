@@ -15,7 +15,7 @@
 }
 
 body{
-    background-color: #050009;
+    background-color: #644a5f;
     color: #ffffff;
 }
 
@@ -31,7 +31,7 @@ body{
 
     #task-input{
         width: 100%;
-        background-color: #10050E;
+        background-color: #583151;
         border: 0;
         border-bottom: solid 1px #ffffff16;
         margin-bottom: 5px;
@@ -147,7 +147,7 @@ button, input[type="button"], input[type="submit"]{
             flex: 2;
             display: none;
 
-            .action-btn:hover{
+            &:hover{
                 cursor: pointer;
             }
             
@@ -161,7 +161,12 @@ button, input[type="button"], input[type="submit"]{
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            height: 16px;
+            height: 25px;
+
+            .action-btn{
+                display: flex;
+                align-items: center;
+            }
         }
 
         .confirmation-window{
