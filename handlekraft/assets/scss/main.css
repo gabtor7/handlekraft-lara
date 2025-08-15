@@ -15,7 +15,7 @@
 }
 
 body{
-    background-color: #644a5f;
+    background-color: #2f343f;
     color: #ffffff;
 }
 
@@ -88,17 +88,25 @@ button, input[type="button"], input[type="submit"]{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     form{
         display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 30%;
+        padding: 5px;
+        border: solid 1px #583151;
     } 
 }
 .input-field{
     display: flex;
+
     label {
         width: 200px;
+    }
+
+    input{
+        width: 300px;
     }
 }
 

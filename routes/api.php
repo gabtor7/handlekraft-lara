@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 
 // --- User/Auth routes --- //
-Route::get('/user', function (Request $request) {
+Route::post('/login', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::post('/user', [LoginController::class, 'signup']);
 
 // --- Task routes --- //
 Route::get('/task', [TaskController::class, 'index']);
