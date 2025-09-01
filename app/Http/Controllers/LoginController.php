@@ -21,7 +21,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
  
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
         }
  
         return back()->withErrors([
@@ -43,7 +43,7 @@ class LoginController extends Controller
     /**
      * Registers a new User with the given data
      */
-    public function signup(Request $request){
+    public function registerUser(Request $request){
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

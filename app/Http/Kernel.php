@@ -6,13 +6,13 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel{
 
     protected $routeMiddleware = [
-        'listen' => \App\Http\Middleware\ListenPort::class,
-        'cors' => \App\Http\Middleware\Cors::class
+        'listen' => \App\Http\Middleware\ListenPort::class
+        // 'cors' => \App\Http\Middleware\Cors::class
     ];
     
     protected $middlewareGroups = [
         'web' => [
-            'listen:80',
+            'listen:80'
         ],
     
         'api' => [

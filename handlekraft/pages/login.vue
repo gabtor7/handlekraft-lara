@@ -15,7 +15,7 @@
                 <button type="button" @click="userSignUp">Sign up</button>
                 <button type="button" @click="userSignIn">Sign in</button><br /> <br />
                 <label for="rememberStatus">Remember me</label>
-                <input v-model="rememberStatus" type="checkbox" id="rememberStatus" class="form-control">
+                <!-- <input v-model="rememberStatus" type="checkbox" id="rememberStatus" class="form-control"> -->
             </div>
         </form>
     </div>
@@ -35,12 +35,12 @@ export default{
 
     methods: {
         userSignUp(){
-            fetch(`http://127.0.0.1:8000/api/user`, {
+            fetch(`http://127.0.0.1:8000/register`, {
                 method: 'POST',
                 body: JSON.stringify({
                     email: this.email,
-                    password: this.password,
-                    rememberStatus: this.rememberStatus
+                    password: this.password
+                    // rememberStatus: this.rememberStatus
                 }),
                 headers: {
                     'Accept': 'application/json',
@@ -48,14 +48,15 @@ export default{
                 }
             }).then(response => {
                 response.json().then(res => console.log(res));
-                this.$router.push('/'); // dirigé vers la page principale
+                // this.$router.push('/'); // dirigé vers la page principale
+                console.log('would have pushed to /')
             }).catch(err => {
                 console.log(err);
             });
         },
         userSignIn(){
-            fetch(`http://127.0.0.1:8000/api/login`, {
-                method: POST,
+            fetch(`http://127.0.0.1:8000/web/login`, {
+                method: GET,
                 body: JSON.stringify({
                     email: this.email,
                     password: this.password,
