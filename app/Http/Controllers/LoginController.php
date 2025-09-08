@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
@@ -45,15 +49,17 @@ class LoginController extends Controller
      */
     public function registerUser(Request $request){
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Password::defaults()],
+            'password' => ['required'],
         ]);
+        echo($request);
 
         $user = User::create([
-            'name' => $request->name,
+            'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'rememberStatus' => null
         ]);
 
         $user->save();
@@ -63,6 +69,7 @@ class LoginController extends Controller
         $device = substr($request->userAgent() ?? '', 0, 255);
 
         return response()->json([
+            // find out about this, createToken doesn't exist in this project...
             'access_token' => $user->createToken($device)->plainTextToken,
         ], Response::HTTP_CREATED);
 

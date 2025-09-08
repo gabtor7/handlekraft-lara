@@ -23,9 +23,16 @@ body{
     font-family: "Mono MMM 5";
 }
 
+a{
+    color: #fff;
+    
+}
+
 #task-input, .single-task-content{
     font-family: "Ubuntu Mono";
 }
+
+
 
 .task-input-form{
 

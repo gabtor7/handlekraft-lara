@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectGuestsTo('/login');
+        $middleware->validateCsrfTokens(except: [
+            'http://127.0.0.1:8000/*'
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
