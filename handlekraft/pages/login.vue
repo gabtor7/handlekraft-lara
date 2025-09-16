@@ -21,16 +21,19 @@
             <div class="action-buttons">
                 <button v-show="!signingUp" type="button" @click="userSignIn">Sign in</button>
                 <button v-show="signingUp" type="button" @click="userSignUp">Sign up</button>
-                <br /><br />
+                <div class="remember-toggle">
+                        <label for="rememberStatus">Remember me</label>
+                        <input v-model="rememberStatus" type="checkbox" id="signingUp" class="form-control" value="Sign up!">
+                    </div>
+            </div>
+            <br /><br />
+            <div class="existing-account-check">
                 <div class="sign-up" v-show="!signingUp">
                     <label for="signingUp">No account? <a href="#" @click="signingUp=true">Sign up now!</a></label>
                 </div>
                 <div class="sign-up" v-show="signingUp">
-                    <label for="signingUp">Already have an account? <a href="#" @click="signingUp=false">Sign in!</a></label>
+                    <span for="signingUp">Already have an account? <a href="#" @click="signingUp=false">Sign in!</a></span>
                 </div>
-                
-                <!-- <label for="rememberStatus">Remember me</label>
-                <input v-model="rememberStatus" type="checkbox" id="signingUp" class="form-control" value="Sign up!"> -->
             </div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         </form>
@@ -59,8 +62,8 @@ export default{
                 body: JSON.stringify({
                     email: this.email,
                     username: this.username,
-                    password: this.password
-                    // rememberStatus: this.rememberStatus
+                    password: this.password,
+                    rememberStatus: this.rememberStatus
                 }),
                 headers: {
                     'Accept': 'application/json',
@@ -79,8 +82,8 @@ export default{
                 method: 'POST',
                 body: JSON.stringify({
                     email: this.email,
-                    password: this.password
-                    // rememberStatus: this.rememberStatus
+                    password: this.password,
+                    rememberStatus: this.rememberStatus
                 }),
                 headers: {
                     'Accept': 'application/json',

@@ -113,6 +113,16 @@ button, input[type="button"], input[type="submit"]{
         color: #bb1111!important;
         letter-spacing: .5px;
     }
+
+    .action-buttons{
+        display: flex;
+        gap: 20px;
+    }
+
+    .existing-account-check{
+        display: flex;
+        justify-content: end;
+    }
 }
 .input-field{
     display: flex;

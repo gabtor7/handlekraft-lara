@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     // vérifier si user est authentifié
     return view('welcome');
-});
+})->middleware('auth');
 
 
 // --- User/Auth routes --- //
@@ -22,12 +22,12 @@ Route::post('/authenticate', function (Request $request) {
 Route::post('/register', [LoginController::class, 'registerUser']);
 
 // --- Task routes --- //
-Route::get('/task', [TaskController::class, 'index']);
+Route::get('/task', [TaskController::class, 'index'])->middleware('auth');
 
-Route::get('/task/{id}', [TaskController::class, 'show']);
+Route::get('/task/{id}', [TaskController::class, 'show'])->middleware('auth');
 
-Route::post('/task', [TaskController::class, 'store']);
+Route::post('/task', [TaskController::class, 'store'])->middleware('auth');
 
-Route::put('/task/{id}', [TaskController::class, 'update']);
+Route::put('/task/{id}', [TaskController::class, 'update'])->middleware('auth');
 
-Route::delete('/task/{id}', [TaskController::class, 'destroy']);
+Route::delete('/task/{id}', [TaskController::class, 'destroy'])->middleware('auth');

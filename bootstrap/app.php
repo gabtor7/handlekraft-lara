@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->redirectGuestsTo('/login');
+        $middleware->redirectGuestsTo('/authenticate');
         $middleware->validateCsrfTokens(except: [
             'http://127.0.0.1:8000/*'
         ]);

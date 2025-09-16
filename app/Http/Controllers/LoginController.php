@@ -59,7 +59,7 @@ class LoginController extends Controller
             'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'rememberStatus' => null
+            'rememberStatus' => $request->rememberStatus
         ]);
 
         $user->save();
