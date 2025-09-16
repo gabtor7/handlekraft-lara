@@ -6,9 +6,9 @@
                 <input v-model="email" type="email" id="email" class="form-control" name="email" placeholder="example@mail.com">
                 <!-- <span class="error-msg" v-if="errors.email">{{ errors.email }}</span><br /><br /> -->
             </div>
-            <div v-show="signingUp" class="input-field name-input">
+            <div v-show="signingUp" class="input-field name-input border-3 border-solid border-white">
                 <label for="name">Username</label>
-                <input v-model="username" type="name" id="name" class="form-control" name="name"><br />
+                <input v-model="username" type="name" id="name" class="form-control border-3 border-solid border-white" name="name"><br />
                 <!-- <div class="error-msg" v-if="loginStatus">{{ wrongCredentials }}</div><br /> -->
             </div>
             <div class="input-field password-input">
@@ -16,9 +16,8 @@
                 <input v-model="password" type="password" id="password" class="form-control" name="password"><br />
                 <!-- <div class="error-msg" v-if="loginStatus">{{ wrongCredentials }}</div><br /> -->
             </div>
-            <!-- Donc là le but, c'est de ne faire apparaître ce champ que si le user a cliqué sur "Sign up"
-                Il faut aussi la possibilité de faire l'inverse, donc log in, qui cacherait les champs qu'on a montré autrement
-            -- TODO -->
+            <div class="password-error" v-show="signingUp" v-if="errors.password">{{ errors.password }}</div>
+
             <div class="action-buttons">
                 <button v-show="!signingUp" type="button" @click="userSignIn">Sign in</button>
                 <button v-show="signingUp" type="button" @click="userSignUp">Sign up</button>
@@ -48,7 +47,8 @@ export default{
             password: "",
             username: "",
             loginStatus: "",
-            signingUp: ""
+            signingUp: "",
+            errors: {}
         }
     },
 
@@ -75,8 +75,8 @@ export default{
             });
         },
         userSignIn(){
-            fetch(`http://127.0.0.1:8000/web/login`, {
-                method: GET,
+            fetch(`http://127.0.0.1:8000/authenticate`, {
+                method: 'POST',
                 body: JSON.stringify({
                     email: this.email,
                     password: this.password
@@ -88,11 +88,25 @@ export default{
                 }
             }).then(response => {
                 response.json().then(
+                    this.$router.push('/')
                     // le user est vérifié, check si demandé de se souvenir de lui
                     // dans ce cas gérer son token
                     // TODO TODO TODO TODO TODO AOI
                 )
-            })
+            }).catch(err => { 
+                console.log(err)
+            });
+        }
+    },
+    watch: {
+        password(newval){
+            if(this.signingUp){
+                if((/^\w{8,32}$/).test(newval)){
+                    this.errors['password'] = ''
+                } else {
+                    this.errors['password'] = 'The password must be between 8 to 32 characters in length'
+                }
+            }
         }
     }
 }

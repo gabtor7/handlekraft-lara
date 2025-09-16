@@ -13,9 +13,11 @@ Route::get('/', function () {
 
 
 // --- User/Auth routes --- //
-Route::get('/authenticate', function (Request $request) {
+Route::post('/authenticate', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+// Route::post('/authenticate', [LoginController::class, 'authenticate']);
 
 Route::post('/register', [LoginController::class, 'registerUser']);
 

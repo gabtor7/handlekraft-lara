@@ -104,6 +104,15 @@ button, input[type="button"], input[type="submit"]{
         padding: 5px;
         border: solid 1px #583151;
     } 
+
+    .password-error{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-left: 200px;
+        width: 300px;
+        font-size: 14px;
+        color: #bb1111!important;
+        letter-spacing: .5px;
+    }
 }
 .input-field{
     display: flex;
