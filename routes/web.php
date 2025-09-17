@@ -15,7 +15,7 @@ Route::get('/', function () {
 // --- User/Auth routes --- //
 Route::post('/authenticate', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 
 // Route::post('/authenticate', [LoginController::class, 'authenticate']);
 

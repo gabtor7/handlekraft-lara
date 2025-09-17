@@ -71,7 +71,7 @@ export default{
                 }
             }).then(response => {
                 response.json().then(res => console.log(res));
-                // this.$router.push('/'); // dirigé vers la page principale
+                this.$router.push('/'); // dirigé vers la page principale
                 console.log('would have pushed to /')
             }).catch(err => {
                 console.log(err);
@@ -90,12 +90,15 @@ export default{
                     'Content-Type': 'application/json'
                 }
             }).then(response => {
-                response.json().then(
-                    this.$router.push('/')
-                    // le user est vérifié, check si demandé de se souvenir de lui
-                    // dans ce cas gérer son token
-                    // TODO TODO TODO TODO TODO AOI
-                )
+                console.log("response: " + response.status)
+                if(response.status==200){
+                    response.json().then(
+                        this.$router.push('/')
+                        // le user est vérifié, check si demandé de se souvenir de lui
+                        // dans ce cas gérer son token
+                        // TODO TODO TODO TODO TODO AOI
+                    )
+                }
             }).catch(err => { 
                 console.log(err)
             });

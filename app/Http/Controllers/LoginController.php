@@ -22,11 +22,15 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
  
-        if (Auth::attempt($credentials, $remember)) {
+
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
+    
             return redirect()->intended('/');
         }
+
+        $user = \App\Models\User::where('email', $request->email)->first();
+        dd(Hash::check($request->password, $user->password));
  
         return back()->withErrors([
             'email' => 'Email/mot de passe erroné(s)',
@@ -48,8 +52,13 @@ class LoginController extends Controller
      * Registers a new User with the given data
      */
     public function registerUser(Request $request){
+
+        // need to check whether the mail address already exists
+        // $exists = User::select('*')
+        // ->where("email", $request->email)->exists();
+
         $request->validate([
-            'username' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required'],
         ]);
@@ -59,7 +68,7 @@ class LoginController extends Controller
             'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'rememberStatus' => $request->rememberStatus
+            'remember_token' => $request->rememberStatus
         ]);
 
         $user->save();
