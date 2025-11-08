@@ -28,7 +28,7 @@ export default{
 
     methods: {
         getTasks(){
-            fetch(`http://127.0.0.1:8000/api/task`, {
+            fetch(`http://127.0.0.1:8000/task`, {
                 method: "GET"
             })
             .then(res => res.json())

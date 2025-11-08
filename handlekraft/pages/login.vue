@@ -94,9 +94,6 @@ export default{
                 if(response.status==200){
                     response.json().then(
                         this.$router.push('/')
-                        // le user est vérifié, check si demandé de se souvenir de lui
-                        // dans ce cas gérer son token
-                        // TODO TODO TODO TODO TODO AOI
                     )
                 }
             }).catch(err => { 

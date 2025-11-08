@@ -45,7 +45,7 @@ class LoginController extends Controller
     
         $request->session()->regenerateToken();
     
-        return redirect('/');
+        return response()->json(['message' => 'Logged out']);
     }
 
     /**

@@ -23,7 +23,7 @@ export default{
             e.preventDefault();
 
             // ajouter la tâche, via la requête API correspondante
-            fetch('http://127.0.0.1:8000/api/task', {
+            fetch('http://127.0.0.1:8000/task', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

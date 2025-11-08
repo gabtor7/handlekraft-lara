@@ -8,8 +8,8 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     // vérifier si user est authentifié
-    return view('welcome');
-})->middleware('auth');
+    return response()->json(['message' => 'Welcome!']);
+})->middleware('auth:sanctum');
 
 
 // --- User/Auth routes --- //
@@ -19,15 +19,17 @@ Route::post('/authenticate', function (Request $request) {
 
 // Route::post('/authenticate', [LoginController::class, 'authenticate']);
 
+Route::post('/logout', [LoginController::class, 'logout']);
+
 Route::post('/register', [LoginController::class, 'registerUser']);
 
 // --- Task routes --- //
-Route::get('/task', [TaskController::class, 'index'])->middleware('auth');
+Route::get('/task', [TaskController::class, 'index']);
 
-Route::get('/task/{id}', [TaskController::class, 'show'])->middleware('auth');
+Route::get('/task/{id}', [TaskController::class, 'show'])->middleware('auth:sanctum');
 
-Route::post('/task', [TaskController::class, 'store'])->middleware('auth');
+Route::post('/task', [TaskController::class, 'store']);
 
-Route::put('/task/{id}', [TaskController::class, 'update'])->middleware('auth');
+Route::put('/task/{id}', [TaskController::class, 'update'])->middleware('auth:sanctum');
 
-Route::delete('/task/{id}', [TaskController::class, 'destroy'])->middleware('auth');
+Route::delete('/task/{id}', [TaskController::class, 'destroy'])->middleware('auth:sanctum');
